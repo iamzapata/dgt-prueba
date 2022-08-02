@@ -25,7 +25,7 @@ export class Game {
     const body = document.body
 
     body.innerHTML = `
-      <div class="Contenedor">
+      <div class="Container">
         <div>
 
           <div class="Highway">
@@ -40,7 +40,7 @@ export class Game {
           
         </div>
 
-        <div class='Controles'>
+        <div class='Controls'>
           <button id='stop'>⏱️</button>
           <div id='restart'></div>
         </div>
