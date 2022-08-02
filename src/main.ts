@@ -6,7 +6,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <a href="https://vitejs.dev" target="_blank">
       <img src="/rafa_y_papa.jpg" class="logo" alt="Vite logo" />
     </a>
-    <h1>El Juego de Papá e Hijo</h1>
     <h3 class="StartJuego">
     Start a game 🚓!
   </h3>
