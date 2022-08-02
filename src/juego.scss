@@ -14,20 +14,20 @@
     height: 200px;
   }
 
-  .Autopista {
+  .Highway {
     position: absolute;
     background-color: gray;
     height: 100px;
     width: 100%;
     top: 25%;
 
-    .Carril {
+    .Road {
       width: 100%;
       border-bottom: dashed 2px white;
       height: 50%;
     }
 
-    .Coche {
+    .Car {
       position: relative;
       font-size: 70px;
       transform: scaleX(-1) translate(0px, 52px);
@@ -35,7 +35,7 @@
     }
   }
 
-  .Tunel {
+  .Tunnel {
     position: absolute;
     right: 80px;
     height: 200px;

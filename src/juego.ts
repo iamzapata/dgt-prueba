@@ -1,18 +1,18 @@
 import "./juego.scss"
 
 const SLOW = 2
-const FAST = 4;
-const MAX_ROUNDS = 2
+const FAST = 4
+const MAX_ROUNDS = 6
 
 export class Juego {
   frame: ReturnType<typeof requestAnimationFrame> | null
-  car: HTMLDivElement | null = null
-  tunnel: HTMLDivElement | null = null
-  timer: HTMLSpanElement | null = null
-  restart: HTMLDivElement | null = null
+  car!: HTMLDivElement
+  tunnel!: HTMLDivElement
+  timer!: HTMLSpanElement
+  restart!: HTMLDivElement
   carPosition: number = 0
   documentBodyWidth: number
-  speed: number = SLOW;
+  speed: number = SLOW
   rounds = 0
 
   constructor() {
@@ -28,15 +28,15 @@ export class Juego {
       <div class="Contenedor">
         <div>
 
-          <div class="Autopista">
-            <div class="Carril">
-              <span class="Coche" id='coche'>
+          <div class="Highway">
+            <div class="Road">
+              <span class="Car" id='car'>
               🚓
               </span>
             </div>
           </div>
           
-          <div class="Tunel" id='tunel'></div>
+          <div class="Tunnel" id='tunnel'></div>
           
         </div>
 
@@ -52,19 +52,19 @@ export class Juego {
       </div>
     `
 
-    this.tunnel = document.querySelector<HTMLDivElement>("#tunel")
-    if (!this.tunnel) throw Error("element with id 'tunel' not found")
+    this.tunnel = <HTMLDivElement>document.querySelector("#tunnel")
+    if (!this.tunnel) throw Error("element with id 'tunnel' not found")
 
-    this.car = document.querySelector<HTMLDivElement>("#coche")
-    if (!this.car) throw Error("element with id 'coche' not found")
+    this.car = <HTMLDivElement>document.querySelector("#car")
+    if (!this.car) throw Error("element with id 'car' not found")
 
-    this.timer = document.querySelector<HTMLSpanElement>("#timer-value")
+    this.timer = <HTMLSpanElement>document.querySelector("#timer-value")
     if (!this.timer) throw Error("element with id 'timer-value' not found")
 
-    this.restart = document.querySelector<HTMLDivElement>("#restart")
+    this.restart = <HTMLDivElement>document.querySelector("#restart")
     if (!this.restart) throw Error("element with id 'restart' not found")
 
-    const stop = document.querySelector<HTMLButtonElement>("#stop")
+    const stop = <HTMLButtonElement>document.querySelector("#stop")
     if (!stop) throw Error("element with id 'stop' not found")
 
     stop.addEventListener("click", this.handleStop.bind(this))
@@ -92,7 +92,9 @@ export class Juego {
       return
     }
 
-    if (this.car.style.left.split("px").shift() > this.documentBodyWidth) {
+    const carLeftPosition = this.car.style.left.split("px").shift() || 0
+
+    if (carLeftPosition > this.documentBodyWidth) {
       this.carPosition = 0
     }
 
@@ -117,7 +119,6 @@ export class Juego {
   async handleStop() {
     if (this.frame) {
       this.rounds += 1
-      this.pushTimeEntry()
       this.speed = this.speed === SLOW ? FAST : SLOW
       this.car.style.visibility = "visible"
       this.car.style.opacity = "0.6"
@@ -142,7 +143,7 @@ export class Juego {
     if (this.rounds === MAX_ROUNDS) return
 
     for (const second of [3, 2, 1, 0, ""]) {
-      this.timer.innerHTML = second
+      this.timer.innerHTML = second.toString()
       await this.sleep(1000)
     }
   }
