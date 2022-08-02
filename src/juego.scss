@@ -1,0 +1,67 @@
+.Contenedor {
+  height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  overflow-x: hidden;
+
+  & > div:first-of-type {
+    position: relative;
+    border-top: solid 5px black;
+    border-bottom: solid 5px black;
+    height: 200px;
+  }
+
+  .Autopista {
+    position: absolute;
+    background-color: gray;
+    height: 100px;
+    width: 100%;
+    top: 25%;
+
+    .Carril {
+      width: 100%;
+      border-bottom: dashed 2px white;
+      height: 50%;
+    }
+
+    .Coche {
+      position: relative;
+      font-size: 70px;
+      transform: scaleX(-1) translate(0px, 52px);
+      display: inline-block;
+    }
+  }
+
+  .Tunel {
+    position: absolute;
+    right: 80px;
+    height: 200px;
+    width: 350px;
+    background-color: orangered;
+    z-index: 100;
+  }
+
+  .Controles {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+
+    button {
+      font-size: 50px;
+      border: solid 1px lightcoral;
+    }
+  }
+
+  .Timer {
+    font-size: 200px;
+    z-index: 1000;
+    position: absolute;
+    left: calc(50% - 1ch / 2);
+    top: 50%;
+  }
+}
