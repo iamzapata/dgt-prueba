@@ -1,5 +1,5 @@
 import "./style.css"
-import { setupJuego } from "./start"
+import { setupGame } from "./start"
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
@@ -7,14 +7,14 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <img src="/rafa_y_papa.jpg" class="logo" alt="Vite logo" />
     </a>
     <h1>El Juego de Papá e Hijo</h1>
-    <h3 class="ComenzarJuego">
-    Comenzar a jugar 🚓!
+    <h3 class="StartJuego">
+    Start a game 🚓!
   </h3>
     <div class="card">
-      <button id="comenzar" type="button"></button>
+      <button id="start" type="button"></button>
     </div>
 
   </div>
 `
 
-setupJuego(document.querySelector<HTMLButtonElement>("#comenzar")!)
+setupGame(document.querySelector<HTMLButtonElement>("#start")!)

@@ -1,12 +1,12 @@
-import { Juego } from './juego';
-export function setupJuego(element: HTMLButtonElement) {
-  const dibujarBoton = () => {
-    element.innerHTML = `Arrancar!`
-  }
-  const juego = new Juego()
+import { Game } from "./game"
 
-  juego.start()
+export function setupGame(element: HTMLButtonElement) {
+  const dibujarBoton = () => {
+    element.innerHTML = `Go!`
+  }
+  const game = new Game()
+
+  dibujarBoton();
   
-  //element.addEventListener('click', Juego().start)
-  dibujarBoton()
+  element.addEventListener("click", () => game.start())
 }

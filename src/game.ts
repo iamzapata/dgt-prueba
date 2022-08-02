@@ -1,10 +1,10 @@
-import "./juego.scss"
+import "./game.scss"
 
 const SLOW = 2
 const FAST = 4
 const MAX_ROUNDS = 6
 
-export class Juego {
+export class Game {
   frame: ReturnType<typeof requestAnimationFrame> | null
   car!: HTMLDivElement
   tunnel!: HTMLDivElement
@@ -92,9 +92,9 @@ export class Juego {
       return
     }
 
-    const carLeftPosition = this.car.style.left.split("px").shift() || 0
+    const [carLeftPosition] = this.car.style.left.split("px")
 
-    if (carLeftPosition > this.documentBodyWidth) {
+    if (parseInt(carLeftPosition) > this.documentBodyWidth) {
       this.carPosition = 0
     }
 
